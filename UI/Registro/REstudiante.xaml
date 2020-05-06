@@ -18,15 +18,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            <Label Content="Estudiante Id:"  Margin="10"/>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Estudiante Id:" Margin="10"/>
+            <Label Content="Nombres:" Margin="10"/>
+            <Label Content="Semestre:" Margin="10"/>
+            <Label Content="Nacionalidades:" Margin="10"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
@@ -34,19 +33,13 @@
                 <TextBox.Text>
                     <Binding Path="EstudianteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
+                            <ExceptionValidationRule></ExceptionValidationRule>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-        </StackPanel>
 
-        <StackPanel Grid.Row="1">
-            <Label Content="Nombres:" Margin="10"></Label>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="NombresTextBox" Margin="0,15" HorizontalAlignment="Left" Width="150">
+            <TextBox x:Name="NombresTextBox" Margin="0,13" HorizontalAlignment="Left" Width="150">
                 <TextBox.Text>
                     <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules>
@@ -55,44 +48,29 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-        </StackPanel>
 
-        <StackPanel Grid.Row="2">
-            <Label Content="Semestre:" Margin="10"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox x:Name="SemestreTextBox" Margin="0,15">
+            <TextBox x:Name="SemestreTextBox" Margin="0,13">
                 <TextBox.Text>
                     <Binding Path="Semestre" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                         <Binding.ValidationRules/>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+
+            <ComboBox x:Name="NacionalidadesComboBox" Margin="0,13"></ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Row="3">
-            <Label Content="Nacionalidades:" Margin="10"/>
-        </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
-            <ComboBox x:Name="NacionalidadesComboBox" Margin="0,15"></ComboBox>
-        </StackPanel>
 
-        <StackPanel Grid.Row="4">
-            <Button x:Name="NuevoButton" Content="Nuevo" Margin="10" Height="40"></Button>
-        </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="NuevoButton" Content="Nuevo" Margin="10" Height="40" Width="100"></Button>
             <Button x:Name="GuardarButton" Content="Guardar" Margin="10" Height="40" Width="100"></Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="4" Grid.Column="2">
             <Button x:Name="EliminarButton" Content="Eliminar" Margin="10" Height="40" Width ="100"></Button>
         </StackPanel>
-
+        
         <StackPanel Grid.Column="2">
-            <Button x:Name="BuscarButton" Content="Buscar" Margin="10" Height="40"></Button>
+            <Button x:Name="BuscarButton" Content="Buscar" Margin="10" Height="40" Width="80"></Button>
         </StackPanel>
 
     </Grid>
