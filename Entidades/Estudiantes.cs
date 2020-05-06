@@ -10,12 +10,14 @@ namespace TeacherControlWPF.Entidades
     {
         [Key]
         public int EstudianteId { get; set; }
+        public DateTime FechaIngreso { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio introducir el nombre")]
         public string Nombres { get; set; }
 
         [Range(minimum: 1, maximum: 10, ErrorMessage = "Seleccione un semestre")]
         public int Semestre { get; set; }
+        public float PuntosExtra { get; set; }
 
         public int NacionalidadId { get; set; }
 

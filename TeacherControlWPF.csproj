@@ -12,6 +12,7 @@
     <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\EliminarT.png" />
     <None Remove="Resources\Guardar.png" />
+    <None Remove="Resources\Window.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,10 +28,12 @@
     <Content Include="Resources\Guardar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Window.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BLL\" />
     <Folder Include="DATA\" />
   </ItemGroup>
 

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TeacherControlWPF.UI.Registro"
         mc:Ignorable="d"
         Title="Registro de Estudiantes"
-        Height="258" Width="389">
+        Icon="/Resources/Window.ico"
+        Height="280" Width="389">
 
     <Grid >
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
@@ -38,19 +39,19 @@
             <StackPanel Orientation="Horizontal" Margin="0,15" >
                 <Button x:Name="NuevoButton" Margin="5,0" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Buscar.png"  />
+                        <Image Source="/Resources/add.png"  />
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>
                 <Button x:Name="GuardarButton"   Margin="5,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Buscar.png"  />
+                        <Image Source="/Resources/Guardar.png"  />
                         <Label Content="Guardar" />
                     </StackPanel>
                 </Button>
                 <Button x:Name="EliminarButton"  Margin="5,0" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Buscar.png"  />
+                        <Image Source="/Resources/EliminarT.png"  />
                         <Label Content="Eliminar" />
                     </StackPanel>
                 </Button>
