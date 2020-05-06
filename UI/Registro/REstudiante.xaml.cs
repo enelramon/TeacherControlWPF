@@ -21,5 +21,7 @@ namespace TeacherControlWPF.UI.Registro
         {
             InitializeComponent();
         }
+
+
     }
 }

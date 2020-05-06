@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherControlWPF.UI.Registro"
         mc:Ignorable="d"
-        Title="REstudiante" Height="400" Width="600">
+        Title="Registro de Estudiantes" Height="400" Width="600">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/FondoBlue.png"/>
+        </Grid.Background>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -63,14 +66,30 @@
 
 
 
-        <StackPanel Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
-            <Button x:Name="NuevoButton" Content="Nuevo" Margin="10" Height="40" Width="100"></Button>
-            <Button x:Name="GuardarButton" Content="Guardar" Margin="10" Height="40" Width="100"></Button>
-            <Button x:Name="EliminarButton" Content="Eliminar" Margin="10" Height="40" Width ="100"></Button>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="NuevoButton" Content="Nuevo" Margin="10" Height="40" Width="100" HorizontalContentAlignment="Right">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Resources/add.png" Stretch="Uniform" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="GuardarButton" Content="Guardar" Margin="10" Height="40" Width="100" HorizontalContentAlignment="Right">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Guardar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EliminarButton" Content="Eliminar" Margin="10" Height="40" Width ="100" HorizontalContentAlignment="Right" >
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/EliminarT.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         
         <StackPanel Grid.Column="2">
-            <Button x:Name="BuscarButton" Content="Buscar" Margin="10" Height="40" Width="80"></Button>
+            <Button x:Name="BuscarButton" Content="Buscar" Margin="5" Height="40" Width="80" HorizontalContentAlignment="Right">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Resources/Buscar.png" AlignmentX="Left"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
 
     </Grid>
