@@ -28,7 +28,7 @@ namespace TeacherControlWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            REstudiante re = new REstudiante();
+            rEstudiantes re = new rEstudiantes();
             re.Show();
         }
     }
