@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherControlWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="600">
     <Grid>
-
+        
+        <StackPanel  HorizontalAlignment="Center" Margin="0,140">
+            <Button Content="Registro Estudiante" Height="60" Click="Button_Click"></Button>
+        </StackPanel>
     </Grid>
 </Window>
