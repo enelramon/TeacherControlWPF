@@ -8,9 +8,6 @@
         Title="Registro de Estudiantes" Height="400" Width="600">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/FondoBlue.png"/>
-        </Grid.Background>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

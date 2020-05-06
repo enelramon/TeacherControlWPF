@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="Ventana Principal" Height="400" Width="600">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/FondoBlue.png"/>
-        </Grid.Background>
 
         <StackPanel  HorizontalAlignment="Center" Margin="0,140">
             <Button Content="Registro Estudiante" Height="60" Click="Button_Click"></Button>
