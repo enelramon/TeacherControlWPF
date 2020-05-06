@@ -82,7 +82,7 @@
         </StackPanel>
         
         <StackPanel Grid.Column="2">
-            <Button x:Name="BuscarButton" Content="Buscar" Margin="5" Height="40" Width="80" HorizontalContentAlignment="Right">
+            <Button x:Name="BuscarButton" Content="Buscar" Margin="5" Height="40" Width="80" VerticalContentAlignment="Top">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Resources/Buscar.png" AlignmentX="Left"/>
                 </Button.Background>
