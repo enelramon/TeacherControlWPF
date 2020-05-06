@@ -59,15 +59,5 @@ namespace TeacherControlWPF.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] FondoBlue {
-            get {
-                object obj = ResourceManager.GetObject("FondoBlue", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
