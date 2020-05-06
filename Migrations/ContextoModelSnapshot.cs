@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeacherControlWPF.DAL;
 
+
 namespace TeacherControlWPF.Migrations
 {
     [DbContext(typeof(Contexto))]
