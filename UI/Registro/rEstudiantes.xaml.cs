@@ -15,9 +15,9 @@ namespace TeacherControlWPF.UI.Registro
     /// <summary>
     /// Interaction logic for REstudiante.xaml
     /// </summary>
-    public partial class REstudiante : Window
+    public partial class rEstudiantes : Window
     {
-        public REstudiante()
+        public rEstudiantes()
         {
             InitializeComponent();
         }
