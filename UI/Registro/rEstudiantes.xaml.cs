@@ -1,22 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using TeacherControlWPF.BLL;
 using TeacherControlWPF.Entidades;
 
 namespace TeacherControlWPF.UI.Registro
 {
-    /// <summary>
-    /// Interaction logic for REstudiante.xaml
-    /// </summary>
     public partial class rEstudiantes : Window
     {
         private Estudiantes Estudiante = new Estudiantes();
@@ -25,70 +12,57 @@ namespace TeacherControlWPF.UI.Registro
         {
             InitializeComponent();
 
-            this.DataContext = Estudiante;  //Cargar las nacionalidades al ComboBox
+            this.DataContext = Estudiante;
+            //Cargar las nacionalidades al ComboBox
 
-            EstudianteIdTextBox.Text = "0"; //Se inicializa el Textbox en 0
-
+            //Cargar las nacionalidades al ComboBox
+            NacionalidadesComboBox.ItemsSource = NacionalidadesBLL.GetNacionalidades();
+            NacionalidadesComboBox.SelectedValuePath = "NacionalidadId";
+            NacionalidadesComboBox.DisplayMemberPath = "Nacionalidad";
         }
             
-        private void Cargar() //Se cargan los datos de los Estudiantes
+        private void Cargar()
         {
             this.DataContext = null;
             this.DataContext = Estudiante;
         }
 
-        private void Limpiar() //Se limpian los datos contenidos en los elementos
+        private void Limpiar()
         {
-            EstudianteIdTextBox.Text = "0";
-            FechaIngresoDataPicker.Text = string.Empty;
-            NombresTextBox.Text = string.Empty;
-            SemestreTextBox.Text = string.Empty;
-            PuntosExtrasTextBox.Text = string.Empty;
-            NacionalidadesComboBox.Text = string.Empty;
             this.Estudiante = new Estudiantes();
-            Cargar();
+            this.DataContext = Estudiante;
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)//Se buscan los datos de los estudiantes mediante el Id
         {
-            Estudiantes es = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
             
-            if(es != null)
-            {
-                Estudiante = es;
-                Cargar();
-            }
-            else
-            {
-                MessageBox.Show("No se encontro", "ERROR");
-            }
         }
         
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
-            Limpiar(); 
+            Limpiar();
             
         }
 
-        private bool ExisteEnLaBaseDeDatos() //Aqui verifica si existe un estudiante en la base de datos mediante el Id
+        private bool ExisteEnLaBaseDeDatos()
         {
             Estudiantes e = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
 
-            return (e != null);
+            return esValido;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e) 
         {
             bool paso = false;
 
-            if (Estudiante.EstudianteId == 0) // Se verifica si el id del estudiante es igual a 0
+            if (Estudiante.EstudianteId == 0)
             {
-                paso = EstudiantesBLL.Guardar(Estudiante); // Se guardan los datos 
+                paso = EstudiantesBLL.Guardar(Estudiante);
             }
             else
             {
-                if (ExisteEnLaBaseDeDatos()) //Si el Id no es 0 se verifica si se guardo en la BLL
+                if (ExisteEnLaBaseDeDatos())
                 {
                     paso = EstudiantesBLL.Modificar(Estudiante);
                 }
@@ -98,30 +72,20 @@ namespace TeacherControlWPF.UI.Registro
                     return;
                 }
 
-                if (paso)
-                {
-                    Limpiar();
-                    MessageBox.Show("Guardado!!", "Exito");
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo Guardar","ERROR");
-                }
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("Transaccione exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            else
+                MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EstudiantesBLL.Eliminar(Estudiante.EstudianteId))
-            {
-                Limpiar();
-                MessageBox.Show("Eliminado","EXITO");
-            }
-            else
-            {
-                MessageBox.Show("No se pudo eliminar", "Error");
-            }
+            if (EstudiantesBLL.Eliminar)
         }
+
 
     }
 }
