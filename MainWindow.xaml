@@ -8,8 +8,23 @@
         Title="Ventana Principal" Height="400" Width="600">
     <Grid>
 
-        <StackPanel  HorizontalAlignment="Center" Margin="0,140">
-            <Button Content="Registro Estudiante" Height="60" Click="Button_Click"></Button>
+        <StackPanel>
+            <Menu Height="18">
+                <MenuItem Header="Registros">
+                    <MenuItem x:Name="EstudianteMenuItem" Header="Registro Estudiante" Click="EstudianteMenuItem_Click"></MenuItem>
+                    <MenuItem x:Name="AdicionalesMenuItem" Header="Registro Puntos Adicionales" Click="AdicionalesMenuItem_Click"></MenuItem>
+                    <MenuItem x:Name="TareasMenuItem" Header="Registro Tareas" Click="TareasMenuItem_Click"/>
+
+                </MenuItem>
+
+                <MenuItem Header="Consultas">
+                    <MenuItem x:Name="ConsultaEstudianteMenuItem" Header="Consulta Estudiante" Click="ConsultaEstudianteMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultaAdicionalesMenuItem" Header="Consulta Puntos Adicionales" Click="ConsultaAdicionalesMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultaTareasMenuItem" Header="Consulta Puntos Adicionales" Click="ConsultaTareasMenuItem_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="Ayuda"/>
+            </Menu>
         </StackPanel>
     </Grid>
 </Window>

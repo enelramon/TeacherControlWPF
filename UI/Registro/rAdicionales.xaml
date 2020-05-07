@@ -25,7 +25,7 @@
                 <Label Content="Fecha:"/>
                 <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}"></DatePicker>
                 
-                <Label Content="Estudiante Id:" />
+                <Label Content="Estudiante:" />
                 <ComboBox x:Name="EstudianteIdComboBox" SelectedValue="{Binding NacionalidadId}" />
                 
                 <Label Content="Puntos:"/>
