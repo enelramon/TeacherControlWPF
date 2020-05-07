@@ -11,11 +11,19 @@ namespace TeacherControlWPF.BLL
 {
     public class TareasBLL
     {
+        public static bool Guardar(Tareas tarea)
+        {
+            if (!Existe(tarea.TareaId))//si no existe insertamos
+                return Insertar(tarea);
+            else
+                return Modificar(tarea);
+        }
+
         /// <summary>
         /// Permite guardar una entidad en la base de datos
         /// </summary>
         /// <param name="tarea">La entidad que se desea guardar</param>
-        public static bool Guardar(Tareas tarea)
+        private static bool Insertar(Tareas tarea)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -41,18 +49,22 @@ namespace TeacherControlWPF.BLL
         /// Permite modificar una entidad en la base de datos
         /// </summary>
         /// <param name="tarea">La entidad que se desea modificar</param>
-        public static bool Modificar(Tareas tarea)
+        private static bool Modificar(Tareas tarea)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
+                //busca la entidad en la base de datos y la elimina
                 contexto.Database.ExecuteSqlRaw($"Delete FROM TareasDetalle Where TareaId={tarea.TareaId}");
+
                 foreach(var item in tarea.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                 }
+
+                //marcar la entidad como modificada para que el contexto sepa como proceder
                 contexto.Entry(tarea).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -78,9 +90,15 @@ namespace TeacherControlWPF.BLL
 
             try
             {
-                var eliminar = TareasBLL.Buscar(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                paso = contexto.SaveChanges() > 0;
+                //buscar la entidad que se desea eliminar
+                var tarea = TareasBLL.Buscar(id);
+
+                if (tarea != null)
+                {
+                    contexto.Tareas.Remove(tarea); //remover la entidad
+                    paso = contexto.SaveChanges() > 0;
+                }
+                
             }
             catch (Exception)
             {
@@ -143,6 +161,31 @@ namespace TeacherControlWPF.BLL
                 contexto.Dispose();
             }
             return Lista;
+        }
+
+        /// <summary>
+        /// Permite buscar si una entidad en la base de datos existe
+        /// </summary>
+        /// <param name="id">El Id de la entidad que se desea buscar</param>
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
+
+            try
+            {
+                encontrado = contexto.Tareas.Any(e => e.TareaId == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
         }
     }
 }
