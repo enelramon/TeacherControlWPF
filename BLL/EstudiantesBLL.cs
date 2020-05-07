@@ -50,7 +50,7 @@ namespace TeacherControlWPF.BLL
         /// Permite modificar una entidad en la base de datos
         /// </summary>
         /// <param name="estudiante">La entidad que se desea modificar</param> 
-        private static bool Modificar(Estudiantes estudiante)
+        public static bool Modificar(Estudiantes estudiante)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -172,6 +172,25 @@ namespace TeacherControlWPF.BLL
             }
 
             return encontrado;
+        }
+
+        public static List<Estudiantes> GetEstudiante()
+        {
+            List<Estudiantes> lista = new List<Estudiantes>();
+            Contexto contexto = new Contexto();
+            try
+            {
+                lista = contexto.Estudiantes.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
         }
     }
 }
