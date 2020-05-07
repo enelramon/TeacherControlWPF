@@ -29,7 +29,7 @@
                 <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso}"></DatePicker> 
                 
                 <Label Content="Nombres:" />
-                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
+                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" /> <!--, Mode=TwoWay, ValidatesOnExceptions=True-->
 
                 <Label Content="Semestre:"/>
                 <TextBox x:Name="SemestreTextBox" Text="{Binding Semestre}"/>
@@ -38,7 +38,7 @@
                 <TextBox x:Name="PuntosExtrasTextBox" Text="{Binding PuntosExtra}" IsReadOnly="True" ></TextBox>
                 
                 <Label Content="Nacionalidad:" />
-                <ComboBox x:Name="NacionalidadesComboBox" SelectedValue="{Binding Nacionalidad}" />
+                <ComboBox x:Name="NacionalidadesComboBox" SelectedValue="{Binding NacionalidadId}" />
             </StackPanel>
 
             <!--BARRA DE BOTONES-->

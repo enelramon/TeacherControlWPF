@@ -11,11 +11,19 @@ namespace TeacherControlWPF.BLL
 {
     public class EstudiantesBLL
     {
+        public static bool Guardar(Estudiantes estudiante)
+        {
+            if (!Existe(estudiante.EstudianteId))//si no existe insertamos
+                return Insertar(estudiante);
+            else
+                return Modificar(estudiante);
+        }
+
         /// <summary>
         /// Permite guardar una entidad en la base de datos
         /// </summary>
         /// <param name="estudiante">La entidad que se desea guardar</param>
-        public static bool Guardar(Estudiantes estudiante)
+        private static bool Insertar(Estudiantes estudiante)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -42,7 +50,7 @@ namespace TeacherControlWPF.BLL
         /// Permite modificar una entidad en la base de datos
         /// </summary>
         /// <param name="estudiante">La entidad que se desea modificar</param> 
-        public static bool Modificar(Estudiantes estudiante)
+        private static bool Modificar(Estudiantes estudiante)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -50,7 +58,7 @@ namespace TeacherControlWPF.BLL
             try
             {
                 //marcar la entidad como modificada para que el contexto sepa como proceder
-                contexto.Entry(estudiante).State = EntityState.Modified; 
+                contexto.Entry(estudiante).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -76,11 +84,12 @@ namespace TeacherControlWPF.BLL
             {
                 //buscar la entidad que se desea eliminar
                 var estudiante = contexto.Estudiantes.Find(id);
-
-                //remover la entidad
-                contexto.Estudiantes.Remove(estudiante);
-
-                paso = contexto.SaveChanges() > 0;
+                
+                if (estudiante != null)
+                {
+                    contexto.Estudiantes.Remove(estudiante);//remover la entidad
+                    paso = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -118,7 +127,7 @@ namespace TeacherControlWPF.BLL
 
             return estudiante;
         }
-        
+
         /// <summary>
         /// Permite obtener una lista filtrada por un criterio de busqueda
         /// </summary>
@@ -142,6 +151,27 @@ namespace TeacherControlWPF.BLL
                 contexto.Dispose();
             }
             return lista;
+        }
+
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
+
+            try
+            {
+                encontrado = contexto.Estudiantes.Any(e => e.EstudianteId == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
         }
     }
 }
