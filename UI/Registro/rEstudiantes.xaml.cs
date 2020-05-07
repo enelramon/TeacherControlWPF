@@ -25,20 +25,19 @@ namespace TeacherControlWPF.UI.Registro
         {
             InitializeComponent();
 
-            this.DataContext = Estudiante;
-            //Cargar las nacionalidades al ComboBox
+            this.DataContext = Estudiante;  //Cargar las nacionalidades al ComboBox
 
             EstudianteIdTextBox.Text = "0"; //Se inicializa el Textbox en 0
 
         }
             
-        private void Cargar()
+        private void Cargar() //Se cargan los datos de los Estudiantes
         {
             this.DataContext = null;
             this.DataContext = Estudiante;
         }
 
-        private void Limpiar()
+        private void Limpiar() //Se limpian los datos contenidos en los elementos
         {
             EstudianteIdTextBox.Text = "0";
             FechaIngresoDataPicker.Text = string.Empty;
@@ -50,35 +49,46 @@ namespace TeacherControlWPF.UI.Registro
             Cargar();
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)//Se buscan los datos de los estudiantes mediante el Id
         {
+            Estudiantes es = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
             
+            if(es != null)
+            {
+                Estudiante = es;
+                Cargar();
+            }
+            else
+            {
+                MessageBox.Show("No se encontro", "ERROR");
+            }
         }
+        
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
-            Limpiar();
+            Limpiar(); 
             
         }
 
-        private bool ExisteEnLaBaseDeDatos()
+        private bool ExisteEnLaBaseDeDatos() //Aqui verifica si existe un estudiante en la base de datos mediante el Id
         {
             Estudiantes e = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
 
             return (e != null);
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private void GuardarButton_Click(object sender, RoutedEventArgs e) 
         {
             bool paso = false;
 
-            if (Estudiante.EstudianteId == 0)
+            if (Estudiante.EstudianteId == 0) // Se verifica si el id del estudiante es igual a 0
             {
-                paso = EstudiantesBLL.Guardar(Estudiante);
+                paso = EstudiantesBLL.Guardar(Estudiante); // Se guardan los datos 
             }
             else
             {
-                if (ExisteEnLaBaseDeDatos())
+                if (ExisteEnLaBaseDeDatos()) //Si el Id no es 0 se verifica si se guardo en la BLL
                 {
                     paso = EstudiantesBLL.Modificar(Estudiante);
                 }
@@ -102,7 +112,15 @@ namespace TeacherControlWPF.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EstudiantesBLL.Eliminar)
+            if (EstudiantesBLL.Eliminar(Estudiante.EstudianteId))
+            {
+                Limpiar();
+                MessageBox.Show("Eliminado","EXITO");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar", "Error");
+            }
         }
 
     }

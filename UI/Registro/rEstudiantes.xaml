@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Registro de Estudiantes"
         Icon="/Resources/Window.ico"
-        Height="360" Width="389">
+        Height="380" Width="389">
 
     <Grid >
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
