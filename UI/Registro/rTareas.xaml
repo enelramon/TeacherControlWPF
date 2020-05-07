@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Registro de Tareas" 
         Icon="/Resources/Window.ico"
-        Height="480" Width="600">
+        Height="490" Width="600">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
             
@@ -58,9 +58,9 @@
 
                             <DataGrid x:Name="DetalleDataGrid" Height="80" AutoGenerateColumns="False" ItemsSource="{Binding Detalle}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Tarea Id" Binding="{Binding Detalle.TareaId}"/>
-                                    <DataGridTextColumn Header="Requerimiento" Binding="{Binding Detalle.Requerimiento}"/>
-                                    <DataGridTextColumn Header="Valor" Binding="{Binding Detalle.Valor}"/>
+                                    <DataGridTextColumn Header="Tarea Id" Binding="{Binding TareaId}"/>
+                                    <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
+                                    <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             
