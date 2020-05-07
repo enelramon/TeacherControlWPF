@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TeacherControlWPF.Entidades
@@ -13,6 +14,7 @@ namespace TeacherControlWPF.Entidades
         public string Descripcion { get; set; }
         public float Puntos { get; set; }
 
+        [ForeignKey("TareaId")]
         public List<TareasDetalle> Detalle { get; set; } = new List<TareasDetalle>();
     }
 
@@ -23,5 +25,13 @@ namespace TeacherControlWPF.Entidades
         public int TareaId { get; set; }
         public string Requerimiento { get; set; }
         public float Valor { get; set; }
+
+        public TareasDetalle(int tareaId, string requerimiento, float valor)
+        {
+            Id = 0;
+            TareaId = tareaId;
+            Requerimiento = requerimiento;
+            Valor = valor;
+        }
     }
 }

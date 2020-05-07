@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Registro de Tareas" 
         Icon="/Resources/Window.ico"
-        Height="470" Width="600">
+        Height="490" Width="600">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,0,10,0">
             
@@ -16,7 +16,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="TareaIdTextBox" Text="{Binding TareaId}" Width="100" Height="18"/>
-                    <Button x:Name="BuscarButton" Margin="5,0">
+                    <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Buscar.png"/>
                             <Label Content="Buscar"/>
@@ -42,13 +42,13 @@
                             
                             <StackPanel Orientation="Horizontal">
                                 <TextBox x:Name="ValorTextBox" Text="{Binding Detalle.Valor}" Width="300" Height="18"/>
-                                <Button x:Name="AgregarButton" Margin="10,0">
+                                <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/Guardar.png"/>
                                         <Label Content="Agregar fila"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="RemoverButton" Margin="30,0">
+                                <Button x:Name="RemoverFilaButton" Margin="30,0" Click="RemoverFilaButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/EliminarT.png"/>
                                         <Label Content="Eliminar fila"/>
@@ -56,7 +56,14 @@
                                 </Button>
                             </StackPanel>
 
-                            <DataGrid x:Name="DetalleDataGrid" Height="70"/>
+                            <DataGrid x:Name="DetalleDataGrid" Height="80" AutoGenerateColumns="False" ItemsSource="{Binding Detalle}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Tarea Id" Binding="{Binding TareaId}"/>
+                                    <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
+                                    <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>

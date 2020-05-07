@@ -49,7 +49,6 @@ namespace TeacherControlWPF.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nombres")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<float>("PuntosExtra")
@@ -118,15 +117,12 @@ namespace TeacherControlWPF.Migrations
                     b.Property<int>("TareaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TareasTareaId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("Valor")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TareasTareaId");
+                    b.HasIndex("TareaId");
 
                     b.ToTable("TareasDetalle");
                 });
@@ -144,7 +140,9 @@ namespace TeacherControlWPF.Migrations
                 {
                     b.HasOne("TeacherControlWPF.Entidades.Tareas", null)
                         .WithMany("Detalle")
-                        .HasForeignKey("TareasTareaId");
+                        .HasForeignKey("TareaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

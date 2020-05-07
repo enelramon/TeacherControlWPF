@@ -52,7 +52,7 @@ namespace TeacherControlWPF.UI.Registro
             return e;
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e) 
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
 
@@ -68,17 +68,18 @@ namespace TeacherControlWPF.UI.Registro
                 }
                 else
                 {
-                    MessageBox.Show("No existe en la Base de Datos","ERROR");
+                    MessageBox.Show("No existe en la Base de Datos", "ERROR");
                     return;
                 }
 
-            if (paso)
-            {
-                Limpiar();
-                MessageBox.Show("Transaccione exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Transaccione exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else
-                MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
