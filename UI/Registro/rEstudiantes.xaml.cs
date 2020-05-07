@@ -49,7 +49,7 @@ namespace TeacherControlWPF.UI.Registro
         {
             Estudiantes e = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
 
-            return esValido;
+            return e;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e) 
