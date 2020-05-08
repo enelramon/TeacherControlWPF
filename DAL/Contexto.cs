@@ -8,7 +8,6 @@ namespace TeacherControlWPF.DAL
 {
     public class Contexto : DbContext
     {
-
         public DbSet<Nacionalidades> Nacionalidades { get; set; }
         public DbSet<Estudiantes> Estudiantes { get; set; }
         public DbSet<Tareas> Tareas { get; set; }
@@ -21,9 +20,9 @@ namespace TeacherControlWPF.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Nacionalidades>().HasData(new Nacionalidades { NacionalidadId=1,Nacionalidad="Dominicana"});
-
+            modelBuilder.Entity<Nacionalidades>().HasData(new Nacionalidades { 
+                NacionalidadId=1,
+                Nacionalidad="Dominicana"});
         }
-
     }
 }

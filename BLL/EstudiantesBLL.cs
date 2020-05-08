@@ -1,16 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using TeacherControlWPF.DAL;
+using System.Collections.Generic;
 using TeacherControlWPF.Entidades;
+using Microsoft.EntityFrameworkCore;
 
 namespace TeacherControlWPF.BLL
 {
     public class EstudiantesBLL
     {
+        /// <summary>
+        /// Permite insertar o modificar una entidad en la base de datos
+        /// </summary>
+        /// <param name="estudiante">La entidad que se desea guardar</param> 
         public static bool Guardar(Estudiantes estudiante)
         {
             if (!Existe(estudiante.EstudianteId))//si no existe insertamos
@@ -20,7 +23,7 @@ namespace TeacherControlWPF.BLL
         }
 
         /// <summary>
-        /// Permite guardar una entidad en la base de datos
+        /// Permite insertar una entidad en la base de datos
         /// </summary>
         /// <param name="estudiante">La entidad que se desea guardar</param>
         private static bool Insertar(Estudiantes estudiante)
