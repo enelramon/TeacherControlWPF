@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherControlWPF.UI.Consultas"
         mc:Ignorable="d"
-        Title="cEstudiantes" Height="450" Width="800">
+        Title="cEstudiantes" Height="450" Width="550">
     <Grid>
+        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+
+            <StackPanel Orientation="Horizontal">
+               
+                    <StackPanel>
+                    <Label Content="Desde:"/>
+                    <DatePicker x:Name="FechaDesdeDataPicker"/>
+                    </StackPanel>
+              
+
+                <StackPanel Orientation="Vertical" Margin="5,0">
+                <Label Content="Hasta:" />
+                    <DatePicker x:Name="FechaHastaDatePicker"/>
+                </StackPanel>
+                
+                <StackPanel Margin="5,0">
+                <Label Content="Filtro:" />
+                    <ComboBox x:Name="FiltroComboBox" Width="100"/>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                <Label Content="Critero:"/>
+                    <TextBox x:Name="CriterioTextBox" Width="100"/>
+                    
+                </StackPanel>
+
+                <Button x:Name="BuscarButton" Margin="5,10,0,390" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Buscar.png"  />
+                        <Label Content="Buscar" />
+                    </StackPanel>
+                </Button>
+
+
+            </StackPanel>
+
         
+           
+        </StackPanel>
     </Grid>
 </Window>

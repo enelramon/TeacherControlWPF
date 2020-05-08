@@ -35,7 +35,19 @@ namespace TeacherControlWPF.UI.Registro
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)//Se buscan los datos de los estudiantes mediante el Id
         {
-            
+            Estudiantes encontrado = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
+
+            if (encontrado != null)
+            {
+                Estudiante = encontrado;
+                Cargar();
+                MessageBox.Show("Estudiante encontrado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Limpiar();
+                MessageBox.Show("No existe en la base de datos", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         
 
@@ -49,7 +61,7 @@ namespace TeacherControlWPF.UI.Registro
         {
             Estudiantes e = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
 
-            return esValido;
+            return (e != null);
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +76,7 @@ namespace TeacherControlWPF.UI.Registro
             {
                 if (ExisteEnLaBaseDeDatos())
                 {
-                    paso = EstudiantesBLL.Modificar(Estudiante);
+                    paso = EstudiantesBLL.Guardar(Estudiante);
                 }
                 else
                 {
@@ -84,7 +96,15 @@ namespace TeacherControlWPF.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EstudiantesBLL.Eliminar)
+            if (EstudiantesBLL.Eliminar(Estudiante.EstudianteId))
+            {
+                Limpiar();
+                MessageBox.Show("Eliminado", "EXITO");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar", "Error");
+            }
         }
 
 

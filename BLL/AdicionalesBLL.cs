@@ -1,32 +1,29 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using TeacherControlWPF.DAL;
-using System.Collections.Generic;
 using TeacherControlWPF.Entidades;
-using Microsoft.EntityFrameworkCore;
 
 namespace TeacherControlWPF.BLL
 {
-    public class EstudiantesBLL
+    public class AdicionalesBLL
     {
-        /// <summary>
-        /// Permite insertar o modificar una entidad en la base de datos
-        /// </summary>
-        /// <param name="estudiante">La entidad que se desea guardar</param> 
-        public static bool Guardar(Estudiantes estudiante)
+        public static bool Guardar(Adicionales adicionales)
         {
-            if (!Existe(estudiante.EstudianteId))//si no existe insertamos
-                return Insertar(estudiante);
+            if (!Existe(adicionales.AdicionalId))
+                return Insertar(adicionales);
             else
-                return Modificar(estudiante);
+                return Modificar(adicionales);
         }
 
         /// <summary>
-        /// Permite insertar una entidad en la base de datos
+        /// Permite guardar una entidad en la base de datos
         /// </summary>
-        /// <param name="estudiante">La entidad que se desea guardar</param>
-        private static bool Insertar(Estudiantes estudiante)
+        /// <param name="adicionales">La entidad que se desea guardar</param>
+        private static bool Insertar(Adicionales adicionales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -34,7 +31,7 @@ namespace TeacherControlWPF.BLL
             try
             {
                 //Agregar la entidad que se desea insertar al contexto
-                contexto.Estudiantes.Add(estudiante);
+                contexto.Adicionales.Add(adicionales);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -45,15 +42,14 @@ namespace TeacherControlWPF.BLL
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
         /// <summary>
         /// Permite modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="estudiante">La entidad que se desea modificar</param> 
-        public static bool Modificar(Estudiantes estudiante)
+        /// <param name="adicionales">La entidad que se desea modificar</param>
+        private static bool Modificar(Adicionales adicionales)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -61,7 +57,7 @@ namespace TeacherControlWPF.BLL
             try
             {
                 //marcar la entidad como modificada para que el contexto sepa como proceder
-                contexto.Entry(estudiante).State = EntityState.Modified;
+                contexto.Entry(adicionales).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -83,16 +79,18 @@ namespace TeacherControlWPF.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+
             try
             {
                 //buscar la entidad que se desea eliminar
-                var estudiante = contexto.Estudiantes.Find(id);
-                
-                if (estudiante != null)
+                var adicionales = AdicionalesBLL.Buscar(id);
+
+                if (adicionales != null)
                 {
-                    contexto.Estudiantes.Remove(estudiante);//remover la entidad
+                    contexto.Adicionales.Remove(adicionales); //remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
+
             }
             catch (Exception)
             {
@@ -102,22 +100,21 @@ namespace TeacherControlWPF.BLL
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
         /// <summary>
         /// Permite buscar una entidad en la base de datos
         /// </summary>
-        /// <param name="id">El Id de la entidad que se desea buscar</param> 
-        public static Estudiantes Buscar(int id)
+        /// <param name="id">El Id de la entidad que se desea buscar</param>
+        public static Adicionales Buscar(int id)
         {
+            Adicionales adicionales = new Adicionales();
             Contexto contexto = new Contexto();
-            Estudiantes estudiante;
 
             try
             {
-                estudiante = contexto.Estudiantes.Find(id);
+                adicionales = contexto.Adicionales.Find(id);
             }
             catch (Exception)
             {
@@ -127,8 +124,7 @@ namespace TeacherControlWPF.BLL
             {
                 contexto.Dispose();
             }
-
-            return estudiante;
+            return adicionales;
         }
 
         /// <summary>
@@ -136,14 +132,15 @@ namespace TeacherControlWPF.BLL
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<Estudiantes> GetList(Expression<Func<Estudiantes, bool>> criterio)
+        public static List<Adicionales> GetList(Expression<Func<Adicionales, bool>> criterio)
         {
-            List<Estudiantes> lista = new List<Estudiantes>();
+            List<Adicionales> Lista = new List<Adicionales>();
             Contexto contexto = new Contexto();
+
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                lista = contexto.Estudiantes.Where(criterio).ToList();
+                Lista = contexto.Adicionales.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -153,9 +150,13 @@ namespace TeacherControlWPF.BLL
             {
                 contexto.Dispose();
             }
-            return lista;
+            return Lista;
         }
 
+        /// <summary>
+        /// Permite buscar si una entidad en la base de datos existe
+        /// </summary>
+        /// <param name="id">El Id de la entidad que se desea buscar</param>
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -163,7 +164,7 @@ namespace TeacherControlWPF.BLL
 
             try
             {
-                encontrado = contexto.Estudiantes.Any(e => e.EstudianteId == id);
+                encontrado = contexto.Adicionales.Any(e => e.AdicionalId == id);
             }
             catch (Exception)
             {
@@ -176,24 +177,7 @@ namespace TeacherControlWPF.BLL
 
             return encontrado;
         }
-
-        public static List<Estudiantes> GetEstudiante()
-        {
-            List<Estudiantes> lista = new List<Estudiantes>();
-            Contexto contexto = new Contexto();
-            try
-            {
-                lista = contexto.Estudiantes.ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return lista;
-        }
     }
+
 }
+
