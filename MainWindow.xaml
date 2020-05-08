@@ -20,7 +20,7 @@
                 <MenuItem Header="Consultas">
                     <MenuItem x:Name="ConsultaEstudianteMenuItem" Header="Consulta Estudiante" Click="ConsultaEstudianteMenuItem_Click"/>
                     <MenuItem x:Name="ConsultaAdicionalesMenuItem" Header="Consulta Puntos Adicionales" Click="ConsultaAdicionalesMenuItem_Click"/>
-                    <MenuItem x:Name="ConsultaTareasMenuItem" Header="Consulta Puntos Adicionales" Click="ConsultaTareasMenuItem_Click"/>
+                    <MenuItem x:Name="ConsultaTareasMenuItem" Header="Consulta Tareas" Click="ConsultaTareasMenuItem_Click"/>
                 </MenuItem>
 
                 <MenuItem Header="Ayuda"/>
