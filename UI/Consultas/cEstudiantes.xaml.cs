@@ -19,22 +19,26 @@ namespace TeacherControlWPF.UI.Consultas
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Estudiantes>();
-            if (String.IsNullOrWhiteSpace(CriterioTextBox.Text))
+            if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
-                    case 1: //EstudianteId
+                    case 0: //EstudianteId
                         listado = EstudiantesBLL.GetList(e => e.EstudianteId == Utilidades.ToInt(CriterioTextBox.Text));
                         break;
 
-                    case 2: //Nombres                       
+                    case 1: //Nombres                       
                         listado = EstudiantesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                         break;
                 }
+            listado = EstudiantesBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate && c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
+
 
             }
-
-            listado = EstudiantesBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate && c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
+            else
+            {
+                listado = EstudiantesBLL.GetList(c => true);
+            }
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
