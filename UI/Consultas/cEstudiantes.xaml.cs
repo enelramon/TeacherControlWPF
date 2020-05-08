@@ -43,6 +43,8 @@ namespace TeacherControlWPF.UI.Consultas
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
         }
+
+      
     }
 }
 
