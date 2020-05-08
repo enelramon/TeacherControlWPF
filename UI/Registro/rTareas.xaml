@@ -44,7 +44,7 @@
                                 <TextBox x:Name="ValorTextBox" Text="{Binding Detalle.Valor}" Width="300" Height="18"/>
                                 <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click">
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Resources/Guardar.png"/>
+                                        <Image Source="/Resources/agregar.png"/>
                                         <Label Content="Agregar fila"/>
                                     </StackPanel>
                                 </Button>
