@@ -12,19 +12,13 @@ namespace TeacherControlWPF.UI.Registro
         {
             InitializeComponent();
 
+            // Asignar la instancia del al formulario para usarla en BINDINGS
             this.DataContext = Estudiante;
-            //Cargar las nacionalidades al ComboBox
 
             //Cargar las nacionalidades al ComboBox
             NacionalidadesComboBox.ItemsSource = NacionalidadesBLL.GetNacionalidades();
             NacionalidadesComboBox.SelectedValuePath = "NacionalidadId";
             NacionalidadesComboBox.DisplayMemberPath = "Nacionalidad";
-        }
-            
-        private void Cargar()
-        {
-            this.DataContext = null;
-            this.DataContext = Estudiante;
         }
 
         private void Limpiar()
@@ -33,80 +27,66 @@ namespace TeacherControlWPF.UI.Registro
             this.DataContext = Estudiante;
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)//Se buscan los datos de los estudiantes mediante el Id
+        private bool Validar()
         {
-            Estudiantes encontrado = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
+            bool esValido = true;
 
-            if (encontrado != null)
+            if (NombresTextBox.Text.Length == 0)
             {
-                Estudiante = encontrado;
-                Cargar();
-                MessageBox.Show("Estudiante encontrado!!", "EXITO", MessageBoxButton.OK, MessageBoxImage.Information);
+                esValido = false;
+                MessageBox.Show("Transaccion Fallida", "Fallo", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            else
-            {
-                Limpiar();
-                MessageBox.Show("No existe en la base de datos", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+
+            return esValido;
         }
-        
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        {
+            var estudiante = EstudiantesBLL.Buscar(Utilidades.ToInt(EstudianteIdTextBox.Text));
+
+            if (Estudiante != null)
+                this.Estudiante = estudiante;
+            else
+                this.Estudiante = new Estudiantes();
+
+            this.DataContext = this.Estudiante;
+        }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
-            
-        }
-
-        private bool ExisteEnLaBaseDeDatos()
-        {
-            Estudiantes e = EstudiantesBLL.Buscar(Estudiante.EstudianteId);
-
-            return (e != null);
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
+            if (!Validar())
+                return;
 
-            if (Estudiante.EstudianteId == 0)
+            var paso = EstudiantesBLL.Guardar(Estudiante);
+
+            if (paso)
             {
-                paso = EstudiantesBLL.Guardar(Estudiante);
+                Limpiar();
+                MessageBox.Show("Transaccione exitosa!", "Exito", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-            {
-                if (ExisteEnLaBaseDeDatos())
-                {
-                    paso = EstudiantesBLL.Guardar(Estudiante);
-                }
-                else
-                {
-                    MessageBox.Show("No existe en la Base de Datos", "ERROR");
-                    return;
-                }
-
-                if (paso)
-                {
-                    Limpiar();
-                    MessageBox.Show("Transaccione exitosa!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                    MessageBox.Show("Transaccion Fallida", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                MessageBox.Show("Transaccion Fallida", "Fallo", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EstudiantesBLL.Eliminar(Estudiante.EstudianteId))
+            if (EstudiantesBLL.Eliminar(Utilidades.ToInt(EstudianteIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Eliminado", "EXITO");
+                MessageBox.Show("Registro eliminado!", "Exito", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-            {
-                MessageBox.Show("No se pudo eliminar", "Error");
-            }
+                MessageBox.Show("No fue posible eliminar", "Fallo", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
-
     }
 }

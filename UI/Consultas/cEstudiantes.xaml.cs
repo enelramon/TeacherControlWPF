@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using TeacherControlWPF.BLL;
+using TeacherControlWPF.Entidades;
 
 namespace TeacherControlWPF.UI.Consultas
 {
@@ -21,5 +15,30 @@ namespace TeacherControlWPF.UI.Consultas
         {
             InitializeComponent();
         }
+
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        {
+            var listado = new List<Estudiantes>();
+            if (String.IsNullOrWhiteSpace(CriterioTextBox.Text))
+            {
+                switch (FiltroComboBox.SelectedIndex)
+                {
+                    case 1: //EstudianteId
+                        listado = EstudiantesBLL.GetList(e => e.EstudianteId == Utilidades.ToInt(CriterioTextBox.Text));
+                        break;
+
+                    case 2: //Nombres                       
+                        listado = EstudiantesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        break;
+                }
+
+            }
+
+            listado = EstudiantesBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate && c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
+
+            DatosDataGrid.ItemsSource = null;
+            DatosDataGrid.ItemsSource = listado;
+        }
     }
 }
+
