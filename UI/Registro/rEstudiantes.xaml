@@ -14,7 +14,7 @@
 
             <StackPanel Orientation="Vertical">
                 <Label Content="Estudiante Id:" />
-
+                
                 <StackPanel Orientation="Horizontal" >
                     <TextBox x:Name="EstudianteIdTextBox" Text="{Binding EstudianteId}" Width="100"  Height="18" />
                     <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click">
@@ -26,17 +26,18 @@
                 </StackPanel>
 
                 <Label Content="Fecha de Ingreso:"/>
-                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso}"></DatePicker> 
-                
+                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso}"></DatePicker>
+
                 <Label Content="Nombres:" />
-                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" /> <!--, Mode=TwoWay, ValidatesOnExceptions=True-->
+                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
+                <!--, Mode=TwoWay, ValidatesOnExceptions=True-->
 
                 <Label Content="Semestre:"/>
                 <TextBox x:Name="SemestreTextBox" Text="{Binding Semestre}"/>
 
                 <Label Content="Puntos Extras:"/>
                 <TextBox x:Name="PuntosExtrasTextBox" Text="{Binding PuntosExtra}" IsReadOnly="True" ></TextBox>
-                
+
                 <Label Content="Nacionalidad:" />
                 <ComboBox x:Name="NacionalidadesComboBox" SelectedValue="{Binding NacionalidadId}" />
             </StackPanel>
