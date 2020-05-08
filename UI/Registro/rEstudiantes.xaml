@@ -10,11 +10,11 @@
         Height="380" Width="389">
 
     <Grid >
-        <StackPanel Orientation="Vertical" Margin="10,0,10,0">
+        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
 
             <StackPanel Orientation="Vertical">
                 <Label Content="Estudiante Id:" />
-                
+
                 <StackPanel Orientation="Horizontal" >
                     <TextBox x:Name="EstudianteIdTextBox" Text="{Binding EstudianteId}" Width="100"  Height="18" />
                     <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click">
@@ -63,6 +63,11 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+
+
+
+
         </StackPanel>
+
     </Grid>
 </Window>

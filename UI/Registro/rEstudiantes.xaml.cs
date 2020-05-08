@@ -88,5 +88,6 @@ namespace TeacherControlWPF.UI.Registro
                 MessageBox.Show("No fue posible eliminar", "Fallo", 
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
     }
 }
