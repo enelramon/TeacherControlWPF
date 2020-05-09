@@ -163,7 +163,8 @@ namespace TeacherControlWPF.BLL
 
             try
             {
-                encontrado = contexto.Estudiantes.Any(e => e.EstudianteId == id);
+                encontrado = contexto.Estudiantes
+                    .Any(e => e.EstudianteId == id);
             }
             catch (Exception)
             {

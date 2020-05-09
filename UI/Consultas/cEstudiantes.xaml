@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherControlWPF.UI.Consultas"
         mc:Ignorable="d"
-        Title="cEstudiantes" Height="450" Width="550">
+        Icon="/Resources/Window.ico"
+        Title="Consulta de Estudiantes" Height="450" Width="550">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <StackPanel Orientation="Horizontal" Height="58">
-
                 <StackPanel>
                     <Label Content="Desde:"/>
                     <DatePicker x:Name="DesdeDataPicker"/>
@@ -43,9 +43,9 @@
                 </Button>
 
             </StackPanel>
-            
-            <DataGrid x:Name="DatosDataGrid" Height="367" Width="525"/>
-            
+            <StackPanel HorizontalAlignment="Left" >
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window> 
