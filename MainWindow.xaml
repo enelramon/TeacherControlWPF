@@ -14,7 +14,7 @@
                     <MenuItem x:Name="EstudianteMenuItem" Header="Registro Estudiante" Click="EstudianteMenuItem_Click"></MenuItem>
                     <MenuItem x:Name="AdicionalesMenuItem" Header="Registro Puntos Adicionales" Click="AdicionalesMenuItem_Click"></MenuItem>
                     <MenuItem x:Name="TareasMenuItem" Header="Registro Tareas" Click="TareasMenuItem_Click"/>
-
+                    <MenuItem x:Name="NacionalidadesMenuItem" Header="Nacionalidades" Click="NacionalidadesMenuItem_Click"/>
                 </MenuItem>
 
                 <MenuItem Header="Consultas">
@@ -23,7 +23,9 @@
                     <MenuItem x:Name="ConsultaTareasMenuItem" Header="Consulta Tareas" Click="ConsultaTareasMenuItem_Click"/>
                 </MenuItem>
 
-                <MenuItem Header="Ayuda"/>
+                <MenuItem Header="Ayuda">
+                    <Menu/>
+                </MenuItem>
             </Menu>
         </StackPanel>
     </Grid>

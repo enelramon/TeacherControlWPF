@@ -9,7 +9,27 @@ namespace TeacherControlWPF.BLL
 {
     public class NacionalidadesBLL
     {
+        public static Nacionalidades Buscar(int id)
+        {
+            Nacionalidades nacionalidad;
+            Contexto contexto = new Contexto();
 
+            try
+            {
+                nacionalidad = contexto.Nacionalidades.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return nacionalidad;
+        }
         public static List<Nacionalidades> GetNacionalidades()
         {
             List<Nacionalidades> lista = new List<Nacionalidades>();

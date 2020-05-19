@@ -1,0 +1,30 @@
+﻿<Window x:Class="TeacherControlWPF.UI.Registro.rNacionalidades"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeacherControlWPF.UI.Registro"
+        mc:Ignorable="d"
+        Title="rNacionalidades" Height="195" Width="241">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Id Nacionalidad"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="NacionalidadIdTextBox" Width="87" />
+                    <Button x:Name="BuscarButton" Content="Buscar" Margin="5,0" Click="BuscarButton_Click" />
+                </StackPanel>
+
+                <Label Content="Nacionalidad"/>
+                <TextBox x:Name="NacionalidadTextBox" Text="{Binding Nacionalidad}" />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,15" >
+                <Button x:Name="NuevoButton" Margin="5,0" Content="Nuevo" Click="NuevoButton_Click"/>
+                <Button x:Name="GuardarButton" Margin="5,0" Content="Guardar" Click="GuardarButton_Click"/>
+                <Button x:Name="EliminarButton" Margin="5,0" Content="Eliminar" Click="EliminarButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

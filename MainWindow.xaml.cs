@@ -30,20 +30,25 @@ namespace TeacherControlWPF
        
         private void EstudianteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            rEstudiantes re = new rEstudiantes();
-            re.Show();
+            rEstudiantes rEstudiantes = new rEstudiantes();
+            rEstudiantes.Show();
         }
 
         private void AdicionalesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            rAdicionales ra = new rAdicionales();
-            ra.Show();
+            rAdicionales rAdicionales = new rAdicionales();
+            rAdicionales.Show();
         }
 
         private void TareasMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rTareas rt = new rTareas();
             rt.Show();
+        }   
+        private void NacionalidadesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rNacionalidades rNacionalidades = new rNacionalidades();
+            rNacionalidades.Show();
         }
 
         private void ConsultaEstudianteMenuItem_Click(object sender, RoutedEventArgs e)
