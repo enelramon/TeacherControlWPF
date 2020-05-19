@@ -10,6 +10,7 @@ namespace TeacherControlWPF.Entidades
     {
         [Key]
         public int EstudianteId { get; set; }
+        public string Matricula { get; set; } 
         public DateTime FechaIngreso { get; set; } = DateTime.Now;
         public string Nombres { get; set; }
         public int Semestre { get; set; }
