@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherControlWPF", "TeacherControlWPF.csproj", "{E365AB3A-185A-4FB1-BF83-BA53EF9DC829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherControlWPFTests", "..\TeacherControlWPFTests\TeacherControlWPFTests.csproj", "{A5136BB3-DC7A-4CEF-A69A-F789BDDCFED3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherControlWPFTests", "..\TeacherControlWPFTests\TeacherControlWPFTests.csproj", "{A5136BB3-DC7A-4CEF-A69A-F789BDDCFED3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherControlWPF.Tests", "TeacherControlWPF.Tests\TeacherControlWPF.Tests.csproj", "{8008E3E6-E534-4165-9677-9A50B032A8A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A5136BB3-DC7A-4CEF-A69A-F789BDDCFED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5136BB3-DC7A-4CEF-A69A-F789BDDCFED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5136BB3-DC7A-4CEF-A69A-F789BDDCFED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8008E3E6-E534-4165-9677-9A50B032A8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8008E3E6-E534-4165-9677-9A50B032A8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8008E3E6-E534-4165-9677-9A50B032A8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8008E3E6-E534-4165-9677-9A50B032A8A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
