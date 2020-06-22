@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TeacherControlWPF.Tests\**" />
+    <EmbeddedResource Remove="TeacherControlWPF.Tests\**" />
+    <None Remove="TeacherControlWPF.Tests\**" />
+    <Page Remove="TeacherControlWPF.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\add.png" />
     <None Remove="Resources\agregar.png" />
     <None Remove="Resources\Buscar.png" />

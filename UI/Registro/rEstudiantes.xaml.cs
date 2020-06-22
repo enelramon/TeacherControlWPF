@@ -45,7 +45,7 @@ namespace TeacherControlWPF.UI.Registro
         {
             var estudiante = EstudiantesBLL.Buscar(Utilidades.ToInt(EstudianteIdTextBox.Text));
 
-            if (Estudiante != null)
+            if (estudiante != null)
                 this.Estudiante = estudiante;
             else
                 this.Estudiante = new Estudiantes();

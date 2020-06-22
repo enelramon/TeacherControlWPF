@@ -31,9 +31,9 @@ namespace TeacherControlWPF.UI.Consultas
                         listado = EstudiantesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                         break;
                 }
-            listado = EstudiantesBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate && c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
 
-
+                listado = EstudiantesBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate && c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
+                
             }
             else
             {
@@ -44,7 +44,7 @@ namespace TeacherControlWPF.UI.Consultas
             DatosDataGrid.ItemsSource = listado;
         }
 
-      
+
     }
 }
 

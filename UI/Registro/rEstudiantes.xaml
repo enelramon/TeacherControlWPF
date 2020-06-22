@@ -36,7 +36,7 @@
                 <TextBox x:Name="SemestreTextBox" Text="{Binding Semestre}"/>
 
                 <Label Content="Puntos Extras:"/>
-                <TextBox x:Name="PuntosExtrasTextBox" Text="{Binding PuntosExtra}" IsReadOnly="True" ></TextBox>
+                <TextBox x:Name="PuntosExtrasTextBox" Text="{Binding PuntosExtra}"  ></TextBox>
 
                 <Label Content="Nacionalidad:" />
                 <ComboBox x:Name="NacionalidadesComboBox" SelectedValue="{Binding NacionalidadId}" />
