@@ -64,7 +64,7 @@ namespace TeacherControlWPF.UI.Registro
 
         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            Tarea.TareasDetalle.Add(new TareasDetalle(Tarea.TareaId, RequerimientoTextBox.Text, Convert.ToSingle(ValorTextBox.Text)));
+            Tarea.Detalle.Add(new TareasDetalle(Tarea.TareaId, RequerimientoTextBox.Text, Convert.ToSingle(ValorTextBox.Text)));
 
             Cargar();
 
@@ -74,9 +74,9 @@ namespace TeacherControlWPF.UI.Registro
 
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            if(DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
+            if(DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
             {
-                Tarea.TareasDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                Tarea.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 Cargar();
             }
         }
