@@ -68,8 +68,10 @@ namespace TeacherControlWPF.UI.Registro
 
             Cargar();
 
+            RequerimientoTextBox.Focus();
             RequerimientoTextBox.Clear();
             ValorTextBox.Clear();
+            RequerimientoTextBox.Focus();
         }
 
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
@@ -133,7 +135,5 @@ namespace TeacherControlWPF.UI.Registro
                 Limpiar();
             }
         }
-
-
     }
 }
