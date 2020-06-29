@@ -60,7 +60,8 @@ namespace TeacherControlWPF
 
         private void ConsultaAdicionalesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            rUsuarios ru = new rUsuarios();
+            ru.Show();
         }
 
         private void ConsultaTareasMenuItem_Click(object sender, RoutedEventArgs e)

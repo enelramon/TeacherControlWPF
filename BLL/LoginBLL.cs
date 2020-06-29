@@ -17,15 +17,14 @@ namespace TeacherControlWPF.BLL
 
             try
             {
-                var ls = from l in db.Usuarios
-                         where l.NombreUsuario == nombreusuario
-                         && l.Contrasena == GetSHA256(contrasena)
-                         select l;
-                if (ls.Count() > 0)
-                {
+                var validar = from usuario in db.Usuarios
+                         where usuario.NombreUsuario == nombreusuario
+                         && usuario.Contrasena == GetSHA256(contrasena)
+                         select usuario;
+                if (validar.Count() > 0)
                     paso = true;
-                }
-                else paso = false;
+                else 
+                    paso = false;
             }
             catch (Exception)
             {
