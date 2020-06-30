@@ -27,6 +27,14 @@ namespace TeacherControlWPF.UI.Login
             InitializeComponent();
         }
 
+        //Metodo que ayuda a cerrar el programa si pone una contraseña mal o NombreUsuario
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
+
 
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -34,12 +42,14 @@ namespace TeacherControlWPF.UI.Login
 
             if (paso)
             {
-                Close();
+                this.Close();
                 Principal.Show();
             }
             else
             {
-                MessageBox.Show("Error de Autenticacion!", "Error!");
+                MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
+                ContrasenaPasswordBox.Clear();
+                NombreUsuarioTextBox.Focus();
             }
         }
     }
