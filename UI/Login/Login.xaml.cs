@@ -27,10 +27,10 @@ namespace TeacherControlWPF.UI.Login
             InitializeComponent();
         }
 
-        private void Inicio()
-        {
 
-            bool paso = LoginBLL.Validar(usuarios.NombreUsuario, usuarios.Contrasena);
+        private void IngresarButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool paso = LoginBLL.Validar(NombreUsuarioTextBox.Text,ContrasenaPasswordBox.Password);
 
             if (paso)
             {
@@ -41,11 +41,6 @@ namespace TeacherControlWPF.UI.Login
             {
                 MessageBox.Show("Error de Autenticacion!", "Error!");
             }
-        }
-
-        private void IngresarButton_Click(object sender, RoutedEventArgs e)
-        {
-            Inicio();
         }
     }
 }

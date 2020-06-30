@@ -13,11 +13,11 @@ namespace TeacherControlWPF.BLL
         public static bool Validar(string nombreusuario, string contrasena)
         {
             bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
 
             try
             {
-                var validar = from usuario in db.Usuarios
+                var validar = from usuario in contexto.Usuarios
                          where usuario.NombreUsuario == nombreusuario
                          && usuario.Contrasena == GetSHA256(contrasena)
                          select usuario;
@@ -33,7 +33,7 @@ namespace TeacherControlWPF.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
 
             return paso;

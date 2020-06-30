@@ -48,7 +48,6 @@ namespace TeacherControlWPF.UI.Registro
             {
                 Tarea = encontrado;
                 Cargar();
-                MessageBox.Show("Tarea encontrada", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
