@@ -44,7 +44,7 @@ namespace TeacherControlWPF.UI.Registro
         {
             Tareas encontrado = TareasBLL.Buscar(Tarea.TareaId);
 
-            if(encontrado != null)
+            if (encontrado != null)
             {
                 Tarea = encontrado;
                 Cargar();
@@ -53,7 +53,7 @@ namespace TeacherControlWPF.UI.Registro
             else
             {
                 Limpiar();
-                MessageBox.Show("Tarea no existe en la base de datos","Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Tarea no existe en la base de datos", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -64,7 +64,9 @@ namespace TeacherControlWPF.UI.Registro
 
         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            Tarea.TareasDetalle.Add(new TareasDetalle(Tarea.TareaId, RequerimientoTextBox.Text, Convert.ToSingle(ValorTextBox.Text)));
+            var filaDetalle = new TareasDetalle(Tarea.TareaId, RequerimientoTextBox.Text, Convert.ToSingle(ValorTextBox.Text));
+
+            Tarea.Detalle.Add(filaDetalle);
 
             Cargar();
 
@@ -74,59 +76,55 @@ namespace TeacherControlWPF.UI.Registro
 
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
         {
-            if(DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
+            if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
             {
-                Tarea.TareasDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                Tarea.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 Cargar();
             }
         }
 
-        private bool ExisteEnLaBaseDeDatos()
+        private bool Validar()
         {
-            Tareas esValido = TareasBLL.Buscar(Tarea.TareaId);
+            bool esValido = true;
 
-            return (esValido != null);
+            if (DescripcionTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                MessageBox.Show("Transaccion Fallida", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            return esValido;
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
+            if (!Validar())
+                return;
 
-            if (Tarea.TareaId == 0)
-            {
-                paso = TareasBLL.Guardar(Tarea);
-            }
-            else
-            {
-                if (ExisteEnLaBaseDeDatos())
-                {
-                    paso = TareasBLL.Guardar(Tarea);
-                }
-                else
-                {
-                    MessageBox.Show("No existe en la base de datos", "ERROR");
-                }
-            }
+            var paso = TareasBLL.Guardar(this.Tarea);
 
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Guardado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Transaccione exitosa!", "Exito",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Fallo al guardar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Transaccion Fallida", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             Tareas existe = TareasBLL.Buscar(Tarea.TareaId);
 
-            if(existe == null)
+            if (existe == null)
             {
-                MessageBox.Show("No existe la tarea en la base de datos","Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No existe la tarea en la base de datos", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else 
+            else
             {
                 TareasBLL.Eliminar(Tarea.TareaId);
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);

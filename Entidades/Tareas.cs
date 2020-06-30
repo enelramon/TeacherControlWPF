@@ -10,7 +10,7 @@ namespace TeacherControlWPF.Entidades
     {
         [Key]
         public int TareaId { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
         public string Descripcion { get; set; }
         public float Puntos { get; set; }
 

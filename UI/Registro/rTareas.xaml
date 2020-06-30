@@ -27,11 +27,11 @@
                 <Label Content="Fecha"/>
                 <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" />
 
-                <Label Content="Descripción"/>
+                <Label Content="Descripción de la tarea"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}"/>
 
                 <Label Content="Puntos"/>
-                <TextBox x:Name="PuntosTextBox" Text="{Binding Puntos}"/>
+                <TextBox x:Name="PuntosTextBox" Text="{Binding Puntos}" IsReadOnly="True"/>
 
                 <StackPanel Orientation="Vertical">
                     <GroupBox Header="Detalles de tarea">
@@ -39,16 +39,15 @@
                             <Label Content="Requerimiento"/>
                             <TextBox x:Name="RequerimientoTextBox" Text="{Binding Detalle.Requerimiento}"/>
                             <Label Content="Valor"/>
-                            
                             <StackPanel Orientation="Horizontal">
                                 <TextBox x:Name="ValorTextBox" Text="{Binding Detalle.Valor}" Width="300" Height="18"/>
-                                <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click">
+                                <Button x:Name="AgregarFilaButton" Margin="10,0" Click="AgregarFilaButton_Click" Width="123">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/agregar.png"/>
                                         <Label Content="Agregar fila"/>
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="RemoverFilaButton" Margin="30,0" Click="RemoverFilaButton_Click">
+                                <Button x:Name="RemoverFilaButton" Margin="10,0" Click="RemoverFilaButton_Click" Width="115">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/EliminarT.png"/>
                                         <Label Content="Eliminar fila"/>
@@ -56,9 +55,9 @@
                                 </Button>
                             </StackPanel>
 
-                            <DataGrid x:Name="DetalleDataGrid" Height="80" AutoGenerateColumns="False" ItemsSource="{Binding Detalle}">
+                            <DataGrid x:Name="DetalleDataGrid" ItemsSource="{Binding Detalle}" Height="80" AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Tarea Id" Binding="{Binding TareaId}"/>
+                                    <DataGridTextColumn Header="Tarea Id" Binding="{Binding TareaId}" Visibility="Hidden" />
                                     <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
                                     <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
                                 </DataGrid.Columns>
