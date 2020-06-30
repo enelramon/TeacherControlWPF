@@ -15,6 +15,7 @@
                     <MenuItem x:Name="AdicionalesMenuItem" Header="Registro Puntos Adicionales" Click="AdicionalesMenuItem_Click"></MenuItem>
                     <MenuItem x:Name="TareasMenuItem" Header="Registro Tareas" Click="TareasMenuItem_Click"/>
                     <MenuItem x:Name="NacionalidadesMenuItem" Header="Nacionalidades" Click="NacionalidadesMenuItem_Click"/>
+                    <MenuItem x:Name="UsuariosMenuItem" Header="Registro usuarios" Click="UsuariosMenuItem_Click" />
                 </MenuItem>
 
                 <MenuItem Header="Consultas">

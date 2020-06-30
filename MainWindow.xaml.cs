@@ -51,6 +51,12 @@ namespace TeacherControlWPF
             rNacionalidades.Show();
         }
 
+        private void UsuariosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rUsuarios ru = new rUsuarios();
+            ru.Show();
+        }
+
         private void ConsultaEstudianteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             cEstudiantes ce = new cEstudiantes();
@@ -60,7 +66,7 @@ namespace TeacherControlWPF
 
         private void ConsultaAdicionalesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void ConsultaTareasMenuItem_Click(object sender, RoutedEventArgs e)

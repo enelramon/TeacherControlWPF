@@ -130,6 +130,39 @@ namespace TeacherControlWPF.Migrations
                     b.ToTable("TareasDetalle");
                 });
 
+            modelBuilder.Entity("TeacherControlWPF.Entidades.Usuarios", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Contrasena")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombres")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UsuarioId");
+
+                    b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            UsuarioId = 1,
+                            Apellidos = "Jiménez L.",
+                            Contrasena = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+                            NombreUsuario = "user01",
+                            Nombres = "Anthony B."
+                        });
+                });
+
             modelBuilder.Entity("TeacherControlWPF.Entidades.Estudiantes", b =>
                 {
                     b.HasOne("TeacherControlWPF.Entidades.Nacionalidades", "Nacionalidad")
