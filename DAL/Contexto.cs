@@ -13,6 +13,7 @@ namespace TeacherControlWPF.DAL
         public DbSet<Tareas> Tareas { get; set; }
         public DbSet<Adicionales> Adicionales { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Combinaciones> Combinaciones { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
