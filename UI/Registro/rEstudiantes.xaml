@@ -26,7 +26,7 @@
                 </StackPanel>
 
                 <Label Content="Fecha de Ingreso:"/>
-                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso ,StringFormat='dd/MM/yyy'}"></DatePicker>
+                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso}"></DatePicker>
 
                 <Label Content="Nombres:" />
                 <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />

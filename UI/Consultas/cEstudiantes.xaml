@@ -44,7 +44,11 @@
 
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527"/>
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527">
+                    <ColumnDefinition>
+                        
+                    </ColumnDefinition>
+                </DataGrid>
             </StackPanel>
         </StackPanel>
     </Grid>
