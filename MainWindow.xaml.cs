@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeacherControlWPF.BLL;
 using TeacherControlWPF.UI.Consultas;
 using TeacherControlWPF.UI.Registro;
 
@@ -27,7 +29,7 @@ namespace TeacherControlWPF
             InitializeComponent();
         }
 
-       
+
         private void EstudianteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rEstudiantes rEstudiantes = new rEstudiantes();
@@ -44,7 +46,7 @@ namespace TeacherControlWPF
         {
             rTareas rt = new rTareas();
             rt.Show();
-        }   
+        }
         private void NacionalidadesMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rNacionalidades rNacionalidades = new rNacionalidades();
@@ -66,11 +68,29 @@ namespace TeacherControlWPF
 
         private void ConsultaAdicionalesMenuItem_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void ConsultaTareasMenuItem_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            Stopwatch cronometro = new Stopwatch();
+            cronometro.Start();
+
+
+
+            await CombinacionesBLL.Insertar();//6561
+
+            cronometro.Stop();
+            MessageBox.Show(cronometro.ElapsedMilliseconds.ToString("N2"));
+
+            //fin
 
         }
     }

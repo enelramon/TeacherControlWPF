@@ -16,7 +16,7 @@
                 <Label Content="Estudiante Id:" />
 
                 <StackPanel Orientation="Horizontal" >
-                    <TextBox x:Name="EstudianteIdTextBox" Text="{Binding EstudianteId}" Width="100"  Height="18" />
+                    <TextBox x:Name="EstudianteIdTextBox" Text="{Binding EstudianteId}"  Width="100"  Height="18" />
                     <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Buscar.png"  />
@@ -26,7 +26,7 @@
                 </StackPanel>
 
                 <Label Content="Fecha de Ingreso:"/>
-                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso}"></DatePicker>
+                <DatePicker x:Name="FechaIngresoDataPicker" SelectedDate="{Binding FechaIngreso ,StringFormat='dd/MM/yyy'}"></DatePicker>
 
                 <Label Content="Nombres:" />
                 <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />

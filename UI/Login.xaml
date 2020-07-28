@@ -13,14 +13,21 @@
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
-                
+
                 <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" />
 
                 <Label Content="Contraseña"/>
 
                 <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <Button x:Name="IngresarButton" Content="Ingresar" Margin="30" Width="60" Height="24" Click="IngresarButton_Click"/>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    <Button x:Name="IngresarButton" Content="Ingresar" Margin="5,0" Click="IngresarButton_Click"/>
+                    <Button x:Name="CancelarButton"   Click="CancelarButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/EliminarT.png"  />
+                            <Label Content="Cancelar" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

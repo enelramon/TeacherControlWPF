@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TeacherControlWPF"
              DispatcherUnhandledException="Application_DispatcherUnhandledException"
-             StartupUri="/UI/Login/Login.xaml">
+             StartupUri="/UI/Login.xaml">
     <Application.Resources>
 
         <!--<Style TargetType="Label">

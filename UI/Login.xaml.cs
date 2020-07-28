@@ -27,15 +27,7 @@ namespace TeacherControlWPF.UI.Login
             InitializeComponent();
         }
 
-        //Metodo que ayuda a cerrar el programa si pone una contraseña mal o NombreUsuario
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-
-            Application.Current.Shutdown();
-        }
-
-
+  
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = LoginBLL.Validar(NombreUsuarioTextBox.Text,ContrasenaPasswordBox.Password);
@@ -51,6 +43,11 @@ namespace TeacherControlWPF.UI.Login
                 ContrasenaPasswordBox.Clear();
                 NombreUsuarioTextBox.Focus();
             }
+        }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

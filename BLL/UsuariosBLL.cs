@@ -160,6 +160,30 @@ namespace TeacherControlWPF.BLL
             return Lista;
         }
 
+        public static bool Validar(string nombre, string contrasena)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Usuarios
+                    .Any(u => u.Nombres.Equals(nombre) 
+                                && u.Contrasena.Equals(GetSHA256(contrasena))
+                          );
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
         //Metodo para encriptar la clave 
         private static string GetSHA256(string str)
         {

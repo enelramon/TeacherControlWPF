@@ -21,6 +21,7 @@ namespace TeacherControlWPF.BLL
                          where usuario.NombreUsuario == nombreusuario
                          && usuario.Contrasena == GetSHA256(contrasena)
                          select usuario;
+
                 if (validar.Count() > 0)
                     paso = true;
                 else 

@@ -11,5 +11,14 @@ namespace TeacherControlWPF.Entidades
         public int Id { get; set; }
         public string Combinacion { get; set; }
 
+        public Combinaciones()
+        {
+
+        }
+
+        public Combinaciones(string combinacion)
+        {
+            Combinacion = combinacion;
+        }
     }
 }
