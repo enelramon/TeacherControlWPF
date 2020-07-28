@@ -1,11 +1,28 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using TeacherControlWPF.BLL;
 using TeacherControlWPF.Entidades;
 
 namespace TeacherControlWPF.UI.Registro
 {
+  
+
     public partial class rEstudiantes : Window
     {
+        public class DateFormat : System.Windows.Data.IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                if (value == null) return null;
+
+                return ((DateTime)value).ToString("dd/MM/yyyy");
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
         private Estudiantes Estudiante = new Estudiantes();
 
         public rEstudiantes()
