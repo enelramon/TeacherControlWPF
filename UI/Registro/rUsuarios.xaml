@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeacherControlWPF.UI.Registro"
-        xmlns:PasswordHelper="clr-namespace:TeacherControlWPF.Resources.PasswordHelper"
+        xmlns:PasswordHelper="clr-namespace:TeacherControlWPF.PasswordHelper"
         mc:Ignorable="d"
         Title="rUsuarios" 
         Height="400" Width="400">
@@ -33,7 +33,9 @@
                 <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}"/>
 
                 <Label Content="Contraseña:"/>
-                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                <PasswordBox x:Name="ContrasenaPasswordBox"
+                             PasswordHelper:PasswordHelper.Attach="True" 
+                             PasswordHelper:PasswordHelper.Password="{Binding Contrasena,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="Confirmar contraseña:"/>
                 <PasswordBox x:Name="ConfirmarContrasenaPasswordBox"/>

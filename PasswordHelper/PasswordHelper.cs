@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace TeacherControlWPF.Resources.PasswordHelper
+namespace TeacherControlWPF.PasswordHelper
 {
     public class PasswordHelper
     {

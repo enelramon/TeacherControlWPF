@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using TeacherControlWPF.BLL;
 using TeacherControlWPF.Entidades;
@@ -46,6 +47,8 @@ namespace TeacherControlWPF.UI.Consultas
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
+
+            var monto = listado.Sum(x => x.PuntosExtra );
         }
 
 

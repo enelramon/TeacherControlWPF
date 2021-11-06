@@ -23,4 +23,5 @@ namespace TeacherControlWPF.Entidades
             Contrasena = string.Empty;
         }
     }
+
 }
